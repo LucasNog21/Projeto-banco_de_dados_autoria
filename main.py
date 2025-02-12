@@ -1,8 +1,9 @@
 from fastapi import FastAPI
-import asyncpg
+from fastapi.responses import HTMLResponse
+#import asyncpg
 
 app = FastAPI()
-
+'''
 async def get_db_connection():
     return await asyncpg.connect(
         user='postgres',
@@ -16,9 +17,12 @@ async def test_connection():
     conn = await get_db_connection()
     await conn.close()
     return {'message': 'conexão bem sucedida'}
+'''
 
 
+@app.get('/', response_class=HTMLResponse)
+def home():
+    with open('views/index.html', 'r', encoding='utf-8') as file:
+        html_content = file.read()
 
-@app.get('/')
-def read_root():
-    return {'message': 'Olá, mundo'}    
+    return HTMLResponse(content=html_content)    
