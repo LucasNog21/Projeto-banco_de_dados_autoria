@@ -1,0 +1,15 @@
+@media screen and (max-width: 1300px){
+    .navbar{
+        position: relative;
+    }
+    .menu{
+        display: none
+    }
+    .logo{
+        margin: 0;
+        text-align: center;
+    }
+    .form-box{
+        margin-top: 100px;
+    }
+}
