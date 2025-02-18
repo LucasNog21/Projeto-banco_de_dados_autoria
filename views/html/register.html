@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/views/css/loginstyle.css">
-    <link rel="stylesheet" href="css/responsivelogin.css">
-    <title>Login</title>
+    <link rel="stylesheet" href="/views/css/registerstyle.css">
+    <link rel="stylesheet" href="css/responsiveregister.css">
+    <title>Registro</title>
 </head>
 <body>
     <nav class="navbar">
@@ -16,8 +16,8 @@
     <section>
         <div class="form-box">
             <div class="form-value">
-                <form action="/views/html/index.html">
-                    <h2 style="font-size: 34px; color: white; font-family: 'Pixelify Sans', cursive;">Login</h2>
+                <form action="">
+                    <h2 style="font-size: 34px; color: white; font-family: 'Pixelify Sans', cursive;">Registro</h2>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
                         <input type="email" oninput="checkValue(this)" required>
@@ -28,21 +28,23 @@
                         <input type="password" required>
                         <label for="password">Senha</label>
                     </div>
-                    <button>Log In</button> <br> <br>
-                    <div class="detail">
-                        <div class="linha">
-                            <p class="detailtext">OU</p>
-                        </div>
-                    </div> <br> <br>
-                    <div class="forget">
-                        <a href="/views/html/password.html">Esqueci a senha</a>
+                    <div class="inputbox">
+                        <ion-icon name="bag-outline"></ion-icon>
+                        <input type="name" required>
+                        <label for="name">Nome completo</label>
                     </div>
+                    <div class="inputbox">
+                        <ion-icon name="bag-outline"></ion-icon>
+                        <input type="username" required>
+                        <label for="username">Nome do usuário</label>
+                    </div>                    
+                    <button>Log In</button>
                 </form>
             </div>
         </div>
         <div class="form-stepbox">
             <div class="register">
-                <p>Não possui uma conta? <a href="/views/html/register.html">Registre-se</a></p>
+                <p>Possui uma conta? <a href="/views/html/login.html">Conecte-se</a></p>
             </div>
         </div>
     </section>
@@ -57,8 +59,6 @@
                 input.classList.remove('has-value');
             }
         }
-
-
     </script>
 </body>
 </html>

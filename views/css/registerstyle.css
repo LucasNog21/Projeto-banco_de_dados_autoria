@@ -50,7 +50,7 @@ section{
 .form-box{
     position: relative;
     width: 400px;
-    height: 400px;
+    height: 500px;
     background-color: var(--containercolor);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
@@ -115,46 +115,6 @@ input.has-value ~ label{
     color: #fff;
     font-size: 1.2em;
     top: 20px;
-}
-.detail{
-    text-align: center;
-    color: #fff;
-    position: relative;
-    border: solid 1px var(--sidecolor);
-    p{
-        transform: translateY(-50%);
-        width: 10%;
-        background-color: var(--containercolor);
-    }
-}
-
-.linha{
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    transform: translateX(45%)
-}
-
-.forget{
-    margin: -15px 0 15px;
-    font-size: .9em;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-}
-
-.forget label input{
-    margin-right: 3px;
-}
-
-.forget a{
-    color: #fff;
-    text-decoration: none;
-}
-
-.forget a:hover{
-    text-decoration: underline;
 }
 
 button{
