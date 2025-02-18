@@ -8,10 +8,10 @@ from pydantic import BaseModel
 class Usuario(BaseModel):
     id : int
     username : str
-    password : str
-    first_name : str
-    last_name : str
-    role : str
+    senha : str
+    nome : str
+    sobrenome : str
+    cargo : str
     email : str
 
 
@@ -22,7 +22,7 @@ async def get_db_connection():
     return await asyncpg.connect(
         user='postgres',
         password='',
-        database='Projeto_pb_aw',
+        database='projeto',
         host='localhost'
     )
 
@@ -35,31 +35,66 @@ async def test_connection():
 
 @app.get('/', response_class=HTMLResponse)
 def home():
-    with open('views/index.html', 'r', encoding='utf-8') as file:
+    with open('views/html/login.html', 'r', encoding='utf-8') as file:
         html_content = file.read()
 
     return HTMLResponse(content=html_content)   
 
-#Login
+#RECEBER ELOGIOS DE THIAGO
 
 @app.get('/login')
-async def get_login():
+async def get_login(email: str, senha: str):
+
     conn = await get_db_connection()
-    row = await conn.fetchrow("SELECT usarname, senha FROM usuario;")
-    await conn.cloes()
+    row = await conn.fetch("SELECT email, senha FROM usuarios;")
+    await conn.close()
     user = []
     for i in row:
-        user.append(f"Username: {i['usarname']}, Password {i['senha']}")
-        
-    return {"Users: ": user}
+        user.append(f"Email: {i['email']}, Password: {i['senha']}")
 
-## ERROR 500 INTERNAL SERVER!
-@app.post('/Cadastro')
+    for i in user:
+        if email == f"{i['email']}" and  senha == f"{i['senha']}":
+            return {'message': "Usuario encontrado"}
+        else:
+            return {'message': "Usuario não existe ou foi digitado errado k"}
+
+
+#AQ ACABOU
+@app.post('/cadastro')
 async def cadastro_usuarios(usuario: Usuario):
     conn = await get_db_connection()
     await conn.execute(
-        "INSERT INTO usuario (id_usuario, usarname, senha, nome, sobrenome, cargo, email) VALUES ($1, $2, $3, $4, $5, $6, $7)",
-        Usuario.id, Usuario.username, Usuario.password, Usuario.first_name, Usuario.last_name, Usuario.role, Usuario.email
+        "INSERT INTO usuarios (id_usuario, username, senha, nome, sobrenome, cargo, email) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+        usuario.id, usuario.username, usuario.senha, usuario.nome, usuario.sobrenome, usuario.cargo, usuario.email
         )
     await conn.close()
-    return {"message": "Craido pai."}
+    return {"message": "Criado pai."}
+
+
+#AQ PENSAR MELHOR
+@app.get('/recuperar_email')
+async def get_login():
+    conn = await get_db_connection()
+    row = await conn.fetch("SELECT email FROM usuarios;")
+    await conn.close()
+    email = []
+    for i in row:
+        ##VERIFICA SE EXISTE.
+        email.append(f"Email: {i['email']}")
+        
+    return {"Email: ": email}
+
+# FUNCIONA UMA BELEZA
+@app.put('/trocar_senha/{id_usuario}')
+async def set_password(id_usuario: int, senha: str):
+    conn = await get_db_connection()
+    result = await conn.execute(
+        "UPDATE usuarios SET senha = $2 WHERE id_usuario = $1"
+            , id_usuario, senha)
+    await conn.close()
+
+    if result == "UPDATE 1":
+        return {'message': f"Senha do usuario {id_usuario} foi atualizado"}
+    else: 
+        return {'message': f"Usuario não foi atualizado"}
+    
