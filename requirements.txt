@@ -1,5 +1,0 @@
-asyncpg
-fastapi
-uvicorn
-virtualenv
-pydantic
