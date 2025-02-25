@@ -9,11 +9,11 @@ senha = '123'
 
 def teste(dic = user, email = email, senha = senha):
     for user_email in dic:
-        if email == dic[user_email]  and  senha == dic[user_email]:
-            return {'message': "Usuario encontrado"}
+        if email == user_email  and  senha == dic[user_email]:
+            return True
         else:
             print(user_email, dic[user_email])
-            return {'message': "Usuario não existe ou foi digitado errado k"}
+            return False    
         
 
 def teste2():
