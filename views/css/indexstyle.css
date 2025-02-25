@@ -121,6 +121,10 @@ section p, h3{
     text-align: justify;
 }
 
+h2{
+    color: white;
+}
+
 .services{
     display: inline-block;
     margin-top: 5%;
