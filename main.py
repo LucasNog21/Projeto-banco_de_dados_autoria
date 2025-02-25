@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 import asyncpg
 from pydantic import BaseModel
+from datetime import datetime
 
 
 
@@ -50,7 +51,7 @@ def home():
 @app.get('/login')
 async def get_users():
     conn = await get_db_connection()
-    row = await conn.fetch("SELECT id_usuario, senha, email FROM usuarios;")
+    row = await conn.fetch("SELECT id_usuario, senha, email FROM usuarios ORDER BY id_usuario;")
     await conn.close()
     user = []
     for i in row:
@@ -97,11 +98,20 @@ async def set_password(id_usuario: int, senha: str):
     else: 
         return {'message': f"Usuario não foi atualizado"}
     
+@app.delete('/delete_usuarios')
+async def delete_usuario(id_usuario: int):
+    conn = await get_db_connection()
+    result = await conn.execute(
+        'DELETE FROM usuarios WHERE id_usuario = $1', id_usuario
+    )
+    await conn.close()
+
+    return {'message' : 'Usuario deletado'}
 
 @app.get('/noticias')
-async def get_news():
+async def get_noticias():
     conn = await get_db_connection()
-    row = await conn.fetch('SELECT * FROM noticias')
+    row = await conn.fetch('SELECT * FROM noticias ORDER BY id_noticia')
     await conn.close()
     noticias = []
     for i in row:
@@ -111,11 +121,22 @@ async def get_news():
 
 #provavelmente dando erro devido ao tipo date do $4
 @app.post('/criar_noticias')
-async def post_news(new : Noticia):
+async def post_noticias(new : Noticia):
+    data_formatada = datetime.strptime(new.data_publicacao,'%Y-%m-%d')
+
     conn = await get_db_connection()
     await conn.execute(
         "INSERT INTO noticias (id_noticia, id_autor, conteudo_noticia, data_publicacao) VALUES($1, $2, $3, $4)",
-        new.id_noticia, new.id_autor, new.conteudo_noticia, new.data_publicacao
+        new.id_noticia, new.id_autor, new.conteudo_noticia, data_formatada
     )
     await conn.close()
     return {'message': 'show the balls'}
+
+@app.delete('/delete_noticias')
+async def delete_noticias(id_noticia : int):
+    conn = await get_db_connection()
+    await conn.execute(
+        'DELETE FROM noticias WHERE id_noticia = $1', id_noticia)
+    
+    await conn.close()
+    return {'message' : 'noticia deletada'}
