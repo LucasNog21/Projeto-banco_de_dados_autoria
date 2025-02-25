@@ -51,7 +51,7 @@ def home():
 @app.get('/login')
 async def get_users():
     conn = await get_db_connection()
-    row = await conn.fetch("SELECT id_usuario, senha, email FROM usuarios;")
+    row = await conn.fetch("SELECT id_usuario, senha, email FROM usuarios ORDER BY id_usuario;")
     await conn.close()
     user = []
     for i in row:
@@ -111,7 +111,7 @@ async def delete_usuario(id_usuario: int):
 @app.get('/noticias')
 async def get_noticias():
     conn = await get_db_connection()
-    row = await conn.fetch('SELECT * FROM noticias')
+    row = await conn.fetch('SELECT * FROM noticias ORDER BY id_noticia')
     await conn.close()
     noticias = []
     for i in row:
