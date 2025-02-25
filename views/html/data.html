@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/css/datastyle.css">
+    <link rel="stylesheet" href="/views/css/responsivedata.css">
+    <title>Página dos Dados</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Tecnoautoritarismo</h1>
+        </div>
+        <div class="menu-container">
+            <button class="menu-button" onclick="toggleMenu()" style="margin-right: 20px;">☰</button>
+            <div class="menu-dropdown">
+                
+                <a href="">Perfil</a>
+                <a href="">Blog</a>
+                <a href="">Pesquisa</a>
+                <a href="" style="color: red;">Sair</a>
+                <div style="display:flex;">
+                    <a href="">a</a>
+                    <a href="">b</a>
+                    <a href="">c</a>
+                    <a href="">d</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <h2 class="headline" >Resultados</h2>
+        <p>Participaram dessa pesquisa um quociente de 43 pessoas dos mais diversos cursos do IFRN campus Pau dos Ferros.</p>
+    
+        <div class="headline">
+            <h2 style="text-align: center; padding: 20px;">E projetos e pesquisas sobre o assunto?</h2>
+        </div>
+            <div class="card">
+                <div class="card-text">
+                    <h3>Ameaças, Saques e Outros...</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem hic ducimus perspiciatis dolor. Non, ab vitae? Mollitia illo inventore esse nam dolores, est, voluptate qui sint voluptatibus veniam reprehenderit sed!</p>
+                </div>
+                <div class="secret-text">
+                    <h3>Outro Texto</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem hic ducimus perspiciatis dolor. Non, ab vitae? Mollitia illo inventore esse nam dolores, est, voluptate qui sint voluptatibus veniam reprehenderit sed!</p>
+                </div>
+            </div>
+        </div>
+        <a href="/views/html/blog.html" class="contact-btn">Participe do nosso blog!</a>
+    </section>
+    <article>
+        <h3>Outras exposições</h3>
+        <!--A imagem da matéria-->
+        <p>Intercept lança bolsas para reportagens sobre tecnoautoritarismo</p>
+        <p>Em parceria com a Associação Data Privacy Brasil de Pesquisa, queremos publicar histórias sobre como o uso de tecnologias por governos pode violar direitos</p>
+    </article>
+    <footer>
+        <div class="logo-footer">
+            <h1 style="font-size: 34px; color: white; font-family: 'Pixelify Sans', cursive;">Tecnoautoritarismo</h1>
+            <p style="color: white">redes sociais</p>    
+        </div>
+        <b style="color:white">© Todos os direitos reservados.</b>
+    </footer>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.menu-container').classList.toggle('active');
+        }
+        document.addEventListener('click', function(event) {
+            const menu = document.querySelector('.menu-container');
+            if (!menu.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
