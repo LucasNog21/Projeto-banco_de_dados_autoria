@@ -61,6 +61,7 @@ body{
     display: block;
 }
 
+
 .navbar{
     width: 100%;
     display: flex;
@@ -81,6 +82,7 @@ body{
     color: white;
     font-size: 34px;
 }
+
 
 .headline{
     flex: 40%;
