@@ -116,6 +116,11 @@ section{
     width: 90%;
 }
 
+section p, h3{
+    color: white;
+    text-align: justify;
+}
+
 .services{
     display: inline-block;
     margin-top: 5%;
@@ -146,8 +151,12 @@ section{
     display: none;
 }
 
-.card:hover .card-text{
+.card:hover .card-text .card-content{
     display: none;
+}
+
+.card-content{
+    padding-left: 10px;
 }
 
 .card:hover .secret-text{
@@ -162,7 +171,6 @@ section{
     color: white;
     border-radius: 5px;
     text-decoration: none;
-    transform: translateX(-10%);
 }
 
 .contact-btn:hover{
