@@ -49,15 +49,16 @@ def home():
 #RECEBER ELOGIOS DE THIAGO, COMPARACAO NAO ESTÁ FUNCIONANDO
 
 @app.get('/login')
-async def get_users():
+async def get_users(email: str, senha: str):
     conn = await get_db_connection()
-    row = await conn.fetch("SELECT id_usuario, senha, email FROM usuarios ORDER BY id_usuario;")
+    row = await conn.fetch("SELECT email, senha FROM usuarios WHERE email = $1 AND senha = $2", email, senha)
     await conn.close()
-    user = []
-    for i in row:
-        user.append(f"Id: {i['id_usuario']}, Senha: {i['senha']}, Email: {i['email']}")
-    return {"Users: ": user}
-
+    
+    if len(row) == 0:
+        return 100 # Não tem usuário ( Ou o email ou a senha está errada )
+    else:
+        return 200 # Usuário encontrado.
+    
 
 #AQ ACABOU
 @app.post('/cadastro')
