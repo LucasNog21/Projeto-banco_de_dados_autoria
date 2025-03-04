@@ -17,6 +17,6 @@ transport.sendMail({
     html: '<h1>CELOKO NUM COMPENSA</h1>',
 
 })
-.then((Response) => console.log('Email enviado com sucesso'))
-.catch((error) => console.log('Erro em enviar o email.', error))
+.then(() => console.log('Email enviado com sucesso'))
+.catch((err) => console.log('Erro em enviar o email.', err))
 
