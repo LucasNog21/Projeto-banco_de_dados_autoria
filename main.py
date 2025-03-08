@@ -146,3 +146,13 @@ async def delete_noticias(id_noticia : int):
     
     await conn.close()
     return {'message' : 'noticia deletada'}
+
+@app.get('/get_respostas')
+async def get_respostas():
+    conn = await get_db_connection()
+    row = await conn.fetch('SELECT * FROM pesquisa_tecnoautoritarismo')
+    await conn.close()
+    respostas = []
+    for i in row:
+        respostas.append(f"carimbo: {i['carimbo']}, conhece_tecnoautoritarismo: {i['conhece_tecnoautoritarismo']}, conceito_tecnoautoritarismo: {i['conceito_tecnoautoritarismo']}, conhece_lgpd_marco_civil: {i['conhece_lgpd_marco_civil']}, conceito_lgpd: {i['conceito_lgpd']},presenciou_tecnoautoritarismo: {i['presenciou_tecnoautoritarismo']},caso_observado: {i['caso_observado']},considera_autoritarismo_digital_violento: {i['considera_autoritarismo_digital_violento']}, impacto_tecnoautoritarismo: {i['impacto_tecnoautoritarismo']},leis_eficazes: {i['leis_eficazes']}, leis_efetivamente_aplicadas: {i['leis_efetivamente_aplicadas']},")
+    return {'Respostas: ': respostas}
