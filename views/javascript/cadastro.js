@@ -1,12 +1,3 @@
-function checkValue(input){
-    if (input.value.trim() !== ''){
-        input.classList.add('has-value');
-    } else {
-        input.classList.remove('has-value');
-    }
-}
-
-
 async function GetLastId() {
     try {
         let response = await fetch("http://localhost:8000/get_len"); // Corrigido HTTP
