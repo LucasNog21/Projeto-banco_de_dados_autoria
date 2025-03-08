@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/views/css/registerstyle.css">
+    <link rel="stylesheet" href="/views/static/css/registerstyle.css">
     <title>Registro</title>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo">
@@ -36,7 +38,7 @@
                         <ion-icon name="bag-outline"></ion-icon>
                         <input type="username" required id="get_username">
                         <label for="username">Nome do usuário</label>
-                    </div>                    
+                    </div>
                     <button>Log In</button>
                 </form>
             </div>
@@ -47,12 +49,14 @@
             </div>
         </div>
     </section>
-    <footer class="footer"><p>© 2025 Tecnoautoritarismo</p></footer>
+    <footer class="footer">
+        <p>© 2025 Tecnoautoritarismo</p>
+    </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-        function checkValue(input){
-            if (input.value.trim() !== ''){
+        function checkValue(input) {
+            if (input.value.trim() !== '') {
                 input.classList.add('has-value');
             } else {
                 input.classList.remove('has-value');
@@ -60,4 +64,5 @@
         }
     </script>
 </body>
+
 </html>

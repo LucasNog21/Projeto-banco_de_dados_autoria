@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/views/css/editprofilestyle.css">
+    <link rel="stylesheet" href="/views/static/css/editprofilestyle.css">
     <title>Página Inicial</title>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo">
@@ -14,7 +16,7 @@
         <div class="menu-container">
             <button class="menu-button" onclick="toggleMenu()" style="margin-right: 20px;">☰</button>
             <div class="menu-dropdown">
-                
+
                 <a href="/views/html/profile.html">Perfil</a>
                 <a href="/views/html/index.html">Home</a>
                 <a href="/views/html/blog.html">Blog</a>
@@ -31,7 +33,9 @@
     </nav>
     <section style="display: flex;">
         <main>
-            <div><h1 style="color: white;">Perfil público</h1></div>
+            <div>
+                <h1 style="color: white;">Perfil público</h1>
+            </div>
             <form action="/views/html/profile.html">
                 <div class="inputbox">
                     <input type="name" id="name" placeholder="Nome">
@@ -68,9 +72,12 @@
             <h3>Editar Foto</h3>
         </aside>
     </section>
-    <footer class="footer"><p>© 2025 Tecnoautoritarismo</p></footer>
+    <footer class="footer">
+        <p>© 2025 Tecnoautoritarismo</p>
+    </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="/views/javascript/script.js"></script>
 </body>
+
 </html>

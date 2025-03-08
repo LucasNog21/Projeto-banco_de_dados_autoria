@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 import asyncpg
 from pydantic import BaseModel
 from datetime import datetime
@@ -23,6 +24,8 @@ class Noticia(BaseModel):
 
 
 app = FastAPI()
+
+app.mount("views/static", StaticFiles(directory="static"), name="static")
 
 async def get_db_connection():
     return await asyncpg.connect(
