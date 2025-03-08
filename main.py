@@ -25,7 +25,7 @@ class Noticia(BaseModel):
 
 app = FastAPI()
 
-app.mount("views/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="views/static"), name="static")
 
 async def get_db_connection():
     return await asyncpg.connect(
@@ -44,7 +44,7 @@ async def test_connection():
 
 @app.get('/', response_class=HTMLResponse)
 def home():
-    with open('views/html/login.html', 'r', encoding='utf-8') as file:
+    with open('views/html/index.html', 'r', encoding='utf-8') as file:
         html_content = file.read()
 
     return HTMLResponse(content=html_content)   
@@ -61,6 +61,8 @@ async def get_users(email: str, senha: str):
         return 100 # Não tem usuário ( Ou o email ou a senha está errada )
     else:
         return 200 # Usuário encontrado.
+    
+
 
 @app.get("/get_len")
 async def get_len_user():
