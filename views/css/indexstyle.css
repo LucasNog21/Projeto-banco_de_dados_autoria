@@ -137,34 +137,10 @@ h2{
     margin: 1%;
     border: 1px solid var(--linecolor);
     border-radius: 10px;
-    cursor: pointer;
-}
-
-.secret-text{
-    display: none;
-}
-
-.card:hover{
-    background: var(--linecolor);
-    color: white;
-    padding: 20px;
-    transition: background 0.3s;
-}
-
-.card:hover img{
-    display: none;
-}
-
-.card:hover .card-text .card-content{
-    display: none;
 }
 
 .card-content{
     padding-left: 10px;
-}
-
-.card:hover .secret-text{
-    display: block;
 }
 
 .contact-btn{

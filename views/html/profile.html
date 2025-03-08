@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/css/profilestyle.css">
+    <link rel="stylesheet" href="/views/css/responsiveindex.css">
+    <title>Página Inicial</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Tecnoautoritarismo</h1>
+        </div>
+        <div class="menu-container">
+            <button class="menu-button" onclick="toggleMenu()" style="margin-right: 20px;">☰</button>
+            <div class="menu-dropdown">
+                
+                <a href="/views/html/profile.html">Perfil</a>
+                <a href="/views/html/blog.html">Blog</a>
+                <a href="/views/html/data.html">Pesquisa</a>
+                <a href="/views/html/login.html" style="color: red;">Sair</a> <!--tem como deslogar?-->
+                <div style="display:flex;">
+                    <a href=""><img src="" alt=""></a>
+                    <a href=""><img src="" alt=""></a>
+                    <a href=""><img src="" alt=""></a>
+                    <a href=""><img src="" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section style="display: flex;">
+        <aside>
+            <img src="" alt="">
+            <h3>Nome de Usuário</h3>
+            <p>Descrição cute cute</p>
+            <a href="/views/html/editprofile.html" class="contact-btn">Editar Perfil</a>
+            <div>
+                <img src="" alt=""><p></p>
+                <img src="" alt=""><p></p>
+                <img src="" alt=""><p></p>
+                <img src="" alt=""><p></p>
+            </div>
+        </aside>
+        <main>
+            <div class="card">
+                <div><h3 style="text-align: center; ">Sobre mim</h3></div>
+                <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, eaque voluptas quisquam expedita sed consectetur sint debitis veritatis, quod sit culpa. Quos sunt obcaecati temporibus reprehenderit maxime dicta? Rem, laudantium?</p></div>
+            </div>
+            <div>
+                <h3>Postagens</h3>
+                <div style="display: flex;">
+                    <div class=card></div>
+                    <div class=card></div>
+                    <div class=card></div>
+                </div>
+            </div>
+        </main>
+    </section>
+    <script src="/views/javascript/script.js"></script>
+</body>
+</html>
