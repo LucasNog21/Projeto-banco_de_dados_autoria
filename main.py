@@ -58,6 +58,13 @@ async def get_users(email: str, senha: str):
         return 100 # Não tem usuário ( Ou o email ou a senha está errada )
     else:
         return 200 # Usuário encontrado.
+
+@app.get("/get_len")
+async def get_len_user():
+    conn = await get_db_connection()
+    row = await conn.fetch("SELECT * FROM usuarios;")
+    await conn.close()
+    return {"Tamanho ": len(row)}
     
 
 #AQ ACABOU
