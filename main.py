@@ -27,7 +27,7 @@ app = FastAPI()
 async def get_db_connection():
     return await asyncpg.connect(
         user='postgres',
-        password='',
+        password='SQL',
         database='projeto',
         host='localhost'
     )
@@ -72,18 +72,16 @@ async def cadastro_usuarios(usuario: Usuario):
     return {"message": "Criado pai."}
 
 
-#AQ PENSAR MELHOR
-@app.get('/recuperar_email')
-async def get_login():
+@app.get('/recuperar_email/{email}')
+async def get_login(email: str):
     conn = await get_db_connection()
-    row = await conn.fetch("SELECT email FROM usuarios;")
+    row = await conn.fetch("SELECT email FROM usuarios WHERE email = $1;", email)
     await conn.close()
-    email = []
-    for i in row:
-        ##VERIFICA SE EXISTE.
-        email.append(f"Email: {i['email']}")
-        
-    return {"Email: ": email}
+
+    if len(row) == 0:
+        return False #Não existe esse email
+    else:
+        return True #Existe esse email
 
 # FUNCIONA UMA BELEZA
 @app.put('/trocar_senha/{id_usuario}')
