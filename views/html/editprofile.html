@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/css/editprofilestyle.css">
+    <title>Página Inicial</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Tecnoautoritarismo</h1>
+        </div>
+        <div class="menu-container">
+            <button class="menu-button" onclick="toggleMenu()" style="margin-right: 20px;">☰</button>
+            <div class="menu-dropdown">
+                
+                <a href="/views/html/profile.html">Perfil</a>
+                <a href="/views/html/index.html">Home</a>
+                <a href="/views/html/blog.html">Blog</a>
+                <a href="/views/html/data.html">Pesquisa</a>
+                <a href="/views/html/login.html" style="color: red;">Sair</a> <!--tem como deslogar?-->
+                <div style="display:flex;">
+                    <a href=""><img src="" alt=""></a>
+                    <a href=""><img src="" alt=""></a>
+                    <a href=""><img src="" alt=""></a>
+                    <a href=""><img src="" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section style="display: flex;">
+        <main>
+            <div><h1 style="color: white;">Perfil público</h1></div>
+            <form action="/views/html/profile.html">
+                <div class="inputbox">
+                    <input type="name" id="name" placeholder="Nome">
+                    <label for="name"></label>
+                </div>
+                <div class="inputbox">
+                    <input type="email" id="email" placeholder="Email">
+                    <label for="email"></label>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="bio" placeholder="Bio">
+                    <label for="bio"></label>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="whatsapp" placeholder="TEM Q POR IMAGEM">
+                    <label for="whatsapp"></label>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="instagram" placeholder="TEM Q POR IMAGEM">
+                    <label for="instagram"></label>
+                </div>
+                <div class="inputbox">
+                    <input type="text" id="twitter" placeholder="TEM Q POR IMAGEM">
+                    <label for="twitter"></label>
+                </div>
+                <button>Atualizar</button> <br> <br>
+            </form>
+        </main>
+        <aside class="container" style="justify-items: center;">
+            <h3>Nome de Usuário</h3>
+            <div style="border: solid 1px red; border-radius: 50%;">
+                <img src="/img/vetor-hacker.png" alt="" height="100px" width="100px">
+            </div>
+            <h3>Editar Foto</h3>
+        </aside>
+    </section>
+    <footer class="footer"><p>© 2025 Tecnoautoritarismo</p></footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="/views/javascript/script.js"></script>
+</body>
+</html>

@@ -8,6 +8,10 @@ body{
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background-color: var(--maincolor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 :root{
@@ -106,6 +110,12 @@ body{
     text-align: center;
 }
 
+.container {
+    max-width: 900px;
+    width: 100%;
+    padding: 20px;
+}
+
 section{
     text-align: center;
     display: inline-block;
@@ -125,19 +135,28 @@ h2{
     color: white;
 }
 
-.card{
+.sobre-mim{
+    padding: 15px;
+    border: 1px solid var(--linecolor);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.postagem{
     width: 90%;
-    padding: 20px;
+    padding: 15px;
     margin: 1%;
     border: 1px solid var(--linecolor);
     border-radius: 10px;
+    flex: 1;
+    min-width: 200px;
 }
 
 .contact-btn{
     display: inline-block;
     background: var(--sidecolor);
     margin-top: 20px;
-    padding: 20px;
+    padding: 5px;
     color: white;
     border-radius: 5px;
     text-decoration: none;
@@ -147,21 +166,7 @@ h2{
     background: var(--darkersidecolor);
 }
 
-article{
-    color: white;
-    margin-left: 5%;
-    margin-right: 5%;
-    padding: 20px;
-    border-bottom: 1px solid white;
-    border-top: 1px solid white;
-}
-
 footer{
-    height: 400px;
-    background-image: linear-gradient(180deg, var(--maincolor), black);
     text-align: center;
-}
-
-.logo-footer{
-    padding: 100px
+    color: white;
 }
