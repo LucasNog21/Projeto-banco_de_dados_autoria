@@ -9,7 +9,7 @@ from datetime import datetime
 
 class Usuario(BaseModel):
     id : int
-    username : str
+    usuario : str
     senha : str
     nome : str
     sobrenome : str
@@ -30,7 +30,7 @@ app.mount("/static", StaticFiles(directory="views/static"), name="static")
 async def get_db_connection():
     return await asyncpg.connect(
         user='postgres',
-        password='SQL',
+        password='',
         database='projeto',
         host='localhost'
     )
@@ -77,8 +77,8 @@ async def get_len_user():
 async def cadastro_usuarios(usuario: Usuario):
     conn = await get_db_connection()
     await conn.execute(
-        "INSERT INTO usuarios (id_usuario, username, senha, nome, sobrenome, cargo, email) VALUES ($1, $2, $3, $4, $5, $6, $7)",
-        usuario.id, usuario.username, usuario.senha, usuario.nome, usuario.sobrenome, usuario.cargo, usuario.email
+        "INSERT INTO usuarios (id_usuario, usuario, senha, nome, sobrenome, cargo, email) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+        usuario.id, usuario.usuario, usuario.senha, usuario.nome, usuario.sobrenome, usuario.cargo, usuario.email
         )
     await conn.close()
     return {"message": "Criado pai."}
