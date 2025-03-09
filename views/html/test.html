@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="email" id="get_email">
+    <input type="text" id="get_senha">
+    <input type="text" id="get_nome_completo">
+    <input type="text" id="get_usuario">
+
+    <p id="resultado">resultado</p>
+
+
+    <button onclick="cadastrar_usuarios()">clique aqui</button>
+
+    
+
+</body>
+    
+<script>
+
+async function getLen() {
+    fetch("http://localhost:8000/get_len")
+    .then(response => response.json())
+    .then(data => {
+    console.log(data.Tamanho + 1);
+    })
+    .catch(error => console.error("Erro ao buscar os dados:", error));
+    }
+
+    return data.Tamanho
+
+
+async function cadastrar_usuarios() {
+
+    try {
+
+        let idUsuario = await getLen() + 1
+
+        const response = await fetch("http://localhost:8000/cadastro", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id: idUsuario || 98,
+                usuario: document.querySelector("#get_usuario").value,
+                senha: document.querySelector("#get_senha").value,
+                nome: "Rafinha",
+                sobrenome: "Nunes",
+                cargo: "usuario",
+                email: document.querySelector("#get_email").value,
+            }),
+        });
+
+        const dados = await response.json()
+
+        console.log(dados)
+    } catch (error) {
+        console.error("Erro na requisição: ", error)
+    }
+}
+
+</script>
+</html>
