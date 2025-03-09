@@ -194,3 +194,10 @@ footer{
 .logo-footer{
     padding: 100px
 }
+
+#logos{
+    display: flex; 
+    color: white; 
+    font-size: smaller; 
+    justify-content: center;
+}
