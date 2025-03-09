@@ -24,12 +24,12 @@
                         <input type="email" id="email" oninput="checkValue(this)" required>
                         <label for="email">Email</label>
                     </div>
-                    <div class="inputbox">
-                        <ion-icon name="bag-outline"></ion-icon>
+                    <div class="inputbox" style="position: relative;">
                         <input type="password" id="password" required>
                         <label for="password">Senha</label>
+                        <ion-icon id="eyeIcon" name="eye-off-outline" onclick="togglePassword()" style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"></ion-icon>
                     </div>
-                    <button onclick="login()">Log In</button> <br> <br>
+                    <button class="button" onclick="login()">Log In</button> <br> <br>
                 </form>
             </div>
         </div>
@@ -45,8 +45,7 @@
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="/viwes/javascript/script.js"></script>
-    <script src="/viwes/javascript/login.js"></script>
+    <script src="/views/javascript/script.js"></script>
+    <script src="/views/javascript/login.js"></script>
 </body>
-
 </html>

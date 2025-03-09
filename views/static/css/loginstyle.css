@@ -116,48 +116,8 @@ input.has-value ~ label{
     font-size: 1.2em;
     top: 20px;
 }
-.detail{
-    text-align: center;
-    color: #fff;
-    position: relative;
-    border: solid 1px var(--sidecolor);
-    p{
-        transform: translateY(-50%);
-        width: 10%;
-        background-color: var(--containercolor);
-    }
-}
 
-.linha{
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    transform: translateX(45%)
-}
-
-.forget{
-    margin: -15px 0 15px;
-    font-size: .9em;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-}
-
-.forget label input{
-    margin-right: 3px;
-}
-
-.forget a{
-    color: #fff;
-    text-decoration: none;
-}
-
-.forget a:hover{
-    text-decoration: underline;
-}
-
-button{
+.button{
     width: 100%;
     height: 40px;
     background: var(--linecolor);
