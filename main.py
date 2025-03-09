@@ -11,7 +11,6 @@ from datetime import datetime
 class Usuario(BaseModel):
     id : int
     usuario : str
-    usuario : str
     senha : str
     nome : str
     sobrenome : str
@@ -31,13 +30,14 @@ origins = [
     "http://localhost",
     "http://localhost:8000",
     "https://localhost:8000/cadastro"
+    "https://localhost:8000/verificar_email/"
+    "https://localhost:8000/get_len"
 
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[origins], 
-    allow_credentials=True,
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -47,7 +47,7 @@ app.mount("/static", StaticFiles(directory="views/static"), name="static")
 async def get_db_connection():
     return await asyncpg.connect(
         user='postgres',
-        password='',
+        password='SQL',
         database='projeto',
         host='localhost'
     )
@@ -87,7 +87,7 @@ async def get_len_user():
     conn = await get_db_connection()
     row = await conn.fetch("SELECT * FROM usuarios;")
     await conn.close()
-    return {"Tamanho ": len(row)}
+    return {"Tamanho": len(row)}
     
 
 #AQ ACABOU

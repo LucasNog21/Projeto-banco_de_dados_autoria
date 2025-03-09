@@ -1,3 +1,6 @@
+const BASE_URL = "https://localhost:8000"
+const resultado = document.querySelector("#resultado")
+
 function checkValue(input) {
     if (input.value.trim() !== '') {
         input.classList.add('has-value');
@@ -6,50 +9,58 @@ function checkValue(input) {
     }
 }
 
-
-async function GetLastId() {
+async function verificarEmail(email) {
     try {
-        let response = await fetch("http://localhost:8000/get_len"); // Corrigido HTTP
-        let dados = await response.json();
-        return dados.Tamanho;
-    } catch (erro) {
-        console.error("Erro na requisição:", erro);
-        return 0; // Retorna um valor padrão em caso de erro
+        const response = await axios.get(`${BASE_URL}/recuperar_email/${email}`);
+        resultado.innerHTML = "<p> True </p>" 
+        return response.data;
+    } catch (error) {
+        console.error("Erro ao verificar email:", error);
+        resultado.innerHTML = "<p> false </p>" 
+        return false;
     }
+}
+
+async function getLen() {
+    fetch("http://localhost:8000/get_len")
+    .then(response => response.json())
+    .then(data => {
+    console.log(data.Tamanho);
+})
+.catch(error => console.error("Erro ao buscar os dados:", error));
 }
 
 async function cadastrar_usuarios() {
 
-    console.log("awdadawdaws")
-    let idUsuario = await GetLastId(); // Agora espera a resposta corretamente
+    let email_existe = verificarEmail("email@email")
 
-    //let nomeCompleto = document.querySelector("#get_nome_completo").value;
-    //let [nome, ...sobrenomeArray] = nomeCompleto.split(" ");
-    //let sobrenome = sobrenomeArray.join(" "); // Junta os sobrenomes caso existam
-    
-    try {
-        const response = await fetch("https://localhost:8000/cadastro", {
-            method: "POST",
-            headers: {
-            "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                id_usuario: 10,
-                username: "string",
-                senha: "string",
-                nome: "string",
-                sobrenome: "string",
-                cargo: "string",
-                email: "string"
-            }),
-        });
-
-        const dados = await response.json();
-        console.log(dados)
-        console.log("Cadastro realizado com sucesso:", dados);
-    } catch (erro) {
-        console.error("Erro na requisição:", erro);
+    if (email_existe == true) {
+        try {
+            const response = await fetch("http://localhost:8000/cadastro", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    id: 11,
+                    usuario: "string",
+                    senha: "string",
+                    nome: "string",
+                    sobrenome: "string",
+                    cargo: "string",
+                    email: "string",
+                }),
+            });
+        
+            const dados = await response.json()
+        
+            console.log(dados)
+        } catch (error) {
+            console.error("Erro na requisição: ", error)
+        }
+    } else {
+        alert("Algo deu errado...")
     }
-}
 
-cadastrar_usuarios()
+    
+}
