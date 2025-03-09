@@ -44,7 +44,7 @@ body{
     background-color: var(--containercolor);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
-    width: 250px;
+    width: 180px;
     overflow: hidden;
 }
 
