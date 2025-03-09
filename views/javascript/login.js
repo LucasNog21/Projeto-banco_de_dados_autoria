@@ -1,30 +1,27 @@
-async function login() {
-        document.getElementById("login-form").addEventListener("submit", async function(event) {
-        event.preventDefault();  // Evita recarregar a página
+async function get_login() {
 
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const message = document.getElementById("message");
+    const email = "email@email";
+    const senha = "123";
 
-        console.log(email, password, message)
-
-        const response = await fetch("http://127.0.0.1:8000/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ email, password })
-        });
-
+    try {
+        let response = await fetch("http://localhost:8000/login/${email}/${senha}");
         const data = await response.json();
-        console.log(data)
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.error(error)
+    }
 
-        if (data = 200) {
-            console.log(data)
-            //window.location.href = data.redirect_url;
-        } else {
-            message.textContent = data.message;  // Exibe erro se for inválido
-            message.style.color = "red";
-        }
-    })
+}
+
+async function login() {
+
+    let response = await get_login()
+
+    if (response == 200){
+        console.log("logado")
+    } else {
+        console.log("paia")
+    }
+
 }
