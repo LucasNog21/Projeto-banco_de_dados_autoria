@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 import asyncpg
 from pydantic import BaseModel
 from datetime import datetime
@@ -9,7 +10,7 @@ from datetime import datetime
 
 class Usuario(BaseModel):
     id : int
-    username : str
+    usuario : str
     senha : str
     nome : str
     sobrenome : str
@@ -24,6 +25,21 @@ class Noticia(BaseModel):
 
 
 app = FastAPI()
+
+origins = [
+    "http://localhost",
+    "http://localhost:8000",
+    "https://localhost:8000/cadastro"
+
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[origins], 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.mount("/static", StaticFiles(directory="views/static"), name="static")
 
@@ -42,12 +58,12 @@ async def test_connection():
     return {'message': 'conexão bem sucedida'}
 
 
-@app.get('/', response_class=HTMLResponse)
-def home():
-    with open('views/html/index.html', 'r', encoding='utf-8') as file:
+@app.get('/edit_profile_page', response_class=HTMLResponse)
+async def edit_profile_page():
+    with open('views/html/editprofile.html', 'r', encoding='utf-8') as file:
         html_content = file.read()
 
-    return HTMLResponse(content=html_content)   
+    return HTMLResponse(content=html_content)
 
 #RECEBER ELOGIOS DE THIAGO, COMPARACAO NAO ESTÁ FUNCIONANDO
 
@@ -77,8 +93,8 @@ async def get_len_user():
 async def cadastro_usuarios(usuario: Usuario):
     conn = await get_db_connection()
     await conn.execute(
-        "INSERT INTO usuarios (id_usuario, username, senha, nome, sobrenome, cargo, email) VALUES ($1, $2, $3, $4, $5, $6, $7)",
-        usuario.id, usuario.username, usuario.senha, usuario.nome, usuario.sobrenome, usuario.cargo, usuario.email
+        "INSERT INTO usuarios (id_usuario, usuario, senha, nome, sobrenome, cargo, email) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+        usuario.id, usuario.usuario, usuario.senha, usuario.nome, usuario.sobrenome, usuario.cargo, usuario.email
         )
     await conn.close()
     return {"message": "Criado pai."}
