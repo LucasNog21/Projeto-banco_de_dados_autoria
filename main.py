@@ -11,6 +11,7 @@ from datetime import datetime
 class Usuario(BaseModel):
     id : int
     usuario : str
+    usuario : str
     senha : str
     nome : str
     sobrenome : str
@@ -46,7 +47,7 @@ app.mount("/static", StaticFiles(directory="views/static"), name="static")
 async def get_db_connection():
     return await asyncpg.connect(
         user='postgres',
-        password='SQL',
+        password='',
         database='projeto',
         host='localhost'
     )
@@ -58,12 +59,13 @@ async def test_connection():
     return {'message': 'conexão bem sucedida'}
 
 
-@app.get('/edit_profile_page', response_class=HTMLResponse)
-async def edit_profile_page():
-    with open('views/html/editprofile.html', 'r', encoding='utf-8') as file:
+@app.get('/', response_class=HTMLResponse)
+def home():
+    with open('views/html/index.html', 'r', encoding='utf-8') as file:
         html_content = file.read()
 
     return HTMLResponse(content=html_content)
+
 
 #RECEBER ELOGIOS DE THIAGO, COMPARACAO NAO ESTÁ FUNCIONANDO
 
