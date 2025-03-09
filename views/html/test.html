@@ -14,7 +14,7 @@
     <p id="resultado">resultado</p>
 
 
-    <button onclick="cadastrar_usuarios()">clique aqui</button>
+    <button onclick="login()">clique aqui</button>
 
     
 
@@ -22,46 +22,32 @@
     
 <script>
 
-async function getLen() {
-    fetch("http://localhost:8000/get_len")
-    .then(response => response.json())
-    .then(data => {
-    console.log(data.Tamanho + 1);
-    })
-    .catch(error => console.error("Erro ao buscar os dados:", error));
-    }
+async function get_login() {
 
-    return data.Tamanho
-
-
-async function cadastrar_usuarios() {
+    const email = "email@email";
+    const senha = "123";
 
     try {
-
-        let idUsuario = await getLen() + 1
-
-        const response = await fetch("http://localhost:8000/cadastro", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                id: idUsuario || 98,
-                usuario: document.querySelector("#get_usuario").value,
-                senha: document.querySelector("#get_senha").value,
-                nome: "Rafinha",
-                sobrenome: "Nunes",
-                cargo: "usuario",
-                email: document.querySelector("#get_email").value,
-            }),
-        });
-
-        const dados = await response.json()
-
-        console.log(dados)
+        let response = await fetch(`http://localhost:8000/login/${email}/${senha}`);
+        const data = await response.json();
+        console.log(data);
+        return data;
     } catch (error) {
-        console.error("Erro na requisição: ", error)
+        console.error(error)
     }
+    
+}
+
+async function login() {
+
+    let response = await get_login()
+
+    if (response == 200){
+        console.log("logado")
+    } else {
+        console.log("paia")
+    }
+    
 }
 
 </script>

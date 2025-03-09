@@ -69,7 +69,7 @@ def home():
 
 #RECEBER ELOGIOS DE THIAGO, COMPARACAO NAO ESTÁ FUNCIONANDO
 
-@app.get('/login')
+@app.get('/login/{email}/{senha}')
 async def get_users(email: str, senha: str):
     conn = await get_db_connection()
     row = await conn.fetch("SELECT email, senha FROM usuarios WHERE email = $1 AND senha = $2", email, senha)
