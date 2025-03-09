@@ -110,12 +110,6 @@ body{
     text-align: center;
 }
 
-.container {
-    max-width: 900px;
-    width: 100%;
-    padding: 20px;
-}
-
 section{
     text-align: center;
     display: inline-block;
@@ -133,23 +127,6 @@ section p, h3{
 
 h2{
     color: white;
-}
-
-.sobre-mim{
-    padding: 15px;
-    border: 1px solid var(--linecolor);
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.postagem{
-    width: 90%;
-    padding: 15px;
-    margin: 1%;
-    border: 1px solid var(--linecolor);
-    border-radius: 10px;
-    flex: 1;
-    min-width: 200px;
 }
 
 .contact-btn{

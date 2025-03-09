@@ -24,10 +24,10 @@
                         <input type="email" oninput="checkValue(this)" required id="get_email">
                         <label for="email">Email</label>
                     </div>
-                    <div class="inputbox">
-                        <ion-icon name="bag-outline"></ion-icon>
-                        <input type="password" required id="get_senha">
+                    <div class="inputbox" style="position: relative;">
+                        <input type="password" id="password" required>
                         <label for="password">Senha</label>
+                        <ion-icon id="eyeIcon" name="eye-off-outline" onclick="togglePassword()" style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"></ion-icon>
                     </div>
                     <div class="inputbox">
                         <input type="name" required id="get_nome_completo">
@@ -51,7 +51,7 @@
         <p>© 2025 Tecnoautoritarismo</p>
     </footer>
     <script src="/views/javascript/cadastro.js"></script>
-
+    <script src="/views/javascript/script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     
