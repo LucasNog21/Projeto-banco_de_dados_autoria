@@ -6,6 +6,8 @@ async function login() {
         const password = document.getElementById("password").value;
         const message = document.getElementById("message");
 
+        console.log(email, password, message)
+
         const response = await fetch("http://127.0.0.1:8000/", {
             method: "POST",
             headers: {
@@ -15,10 +17,11 @@ async function login() {
         });
 
         const data = await response.json();
+        console.log(data)
 
-        if (data.success) {
-            // Agora fazemos um segundo fetch para carregar a home
-            window.location.href = data.redirect_url;
+        if (data = 200) {
+            console.log(data)
+            //window.location.href = data.redirect_url;
         } else {
             message.textContent = data.message;  // Exibe erro se for inválido
             message.style.color = "red";
