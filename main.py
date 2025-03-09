@@ -43,11 +43,12 @@ async def test_connection():
 
 
 @app.get('/', response_class=HTMLResponse)
-def home():
+async def home():
     with open('views/html/index.html', 'r', encoding='utf-8') as file:
         html_content = file.read()
 
-    return HTMLResponse(content=html_content)   
+    return HTMLResponse(content=html_content)
+
 
 #RECEBER ELOGIOS DE THIAGO, COMPARACAO NAO ESTÁ FUNCIONANDO
 
