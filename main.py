@@ -124,7 +124,7 @@ async def set_password(id_usuario: int, senha: str):
     else: 
         return {'message': f"Usuario não foi atualizado"}
     
-@app.delete('/delete_usuarios')
+@app.delete('/delete_usuarios/{id_usuario}')
 async def delete_usuario(id_usuario: int):
     conn = await get_db_connection()
     result = await conn.execute(
