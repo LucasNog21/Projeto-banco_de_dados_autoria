@@ -59,8 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
             
                     // Exibindo o conteúdo no console ou fazendo algo com ele
                     console.log(html);
-
-                    return html
                 } catch(erro) {
                     console.error(erro)
                 }
@@ -75,3 +73,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+async function displayHtml(url, elementId) {
+    const html = await fetchHtml(url);
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.innerHTML = html;  // Inserindo o HTML no elemento
+    }
+}
