@@ -59,6 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
             
                     // Exibindo o conteúdo no console ou fazendo algo com ele
                     console.log(html);
+
+                    return html
                 } catch(erro) {
                     console.error(erro)
                 }

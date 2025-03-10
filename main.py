@@ -53,7 +53,7 @@ app.add_middleware(
 async def get_db_connection():
     return await asyncpg.connect(
         user='postgres',
-        password='SQL',
+        password='',
         database='projeto',
         host='localhost'
     )
@@ -79,7 +79,8 @@ async def login_user(request: LoginRequest):
 
     for i in row:
         if request.email == str(i["email"]) and request.senha == str(i["senha"]):
-            return {"status": 200, 'id' : str(i['id_usuario']), 'url' : f'http://localhost:8000/index/{str(i['id_usuario'])}'}
+            id_usuario = str(i['id_usuario'])
+            return {"status": 200, 'id' : str(i['id_usuario']), "url" : f"http://localhost:8000/index/{id_usuario}"}
     else:
         raise HTTPException(status_code=401, detail="Email ou senha incorretos")
 
@@ -135,16 +136,6 @@ async def delete_usuario(id_usuario: int):
 
     return {'message' : 'Usuario deletado'}
 
-@app.get('/noticias')
-async def get_noticias():
-    conn = await get_db_connection()
-    row = await conn.fetch('SELECT * FROM noticias ORDER BY id_noticia')
-    await conn.close()
-    noticias = []
-    for i in row:
-        noticias.append(f"id_noticia: {i['id_noticia']}, id_autor: {i['id_autor']}, conteudo_noticia: {i['conteudo_noticia']}, data_publicacao: {i['data_publicacao']}")
-
-    return {'Noticias: ':noticias}
 
 @app.get('/get_respostas')
 async def get_respostas():
