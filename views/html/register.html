@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/views/static/css/registerstyle.css">
+    <link rel="stylesheet" href="/static/css/registerstyle.css">
     <title>Registro</title>
 </head>
 
@@ -27,7 +27,8 @@
                     <div class="inputbox" style="position: relative;">
                         <input type="password" id="password" required>
                         <label for="password">Senha</label>
-                        <ion-icon id="eyeIcon" name="eye-off-outline" onclick="togglePassword()" style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"></ion-icon>
+                        <ion-icon id="eyeIcon" name="eye-off-outline" onclick="togglePassword()"
+                            style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);"></ion-icon>
                     </div>
                     <div class="inputbox">
                         <input type="name" required id="get_nome_completo">
@@ -50,61 +51,11 @@
     <footer class="footer">
         <p>© 2025 Tecnoautoritarismo</p>
     </footer>
-
-    <script>
-
-        async function getLen() {
-            try {
-                const response = await fetch("http://localhost:8000/get_len");
-                const data = await response.json();
-                return data.Tamanho; 
-            } catch (error) {
-                console.error(error)
-            }
-        }
-
-        async function cadastrar_usuarios() {
-
-
-            const nomeCompleto = document.querySelector("#get_nome_completo").value;
-            const nomeArray = nomeCompleto.trim().split(" ");
-            const nome = nomeArray[0];
-            const sobrenome = nomeArray.slice(1).join(" ");
-
-            try {
-
-                let idUsuario = await getLen() + 1
-
-                const response = await fetch("http://localhost:8000/cadastro", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        id: idUsuario || 98,
-                        usuario: document.querySelector("#get_usuario").value,
-                        senha: document.querySelector("#get_senha").value,
-                        nome: nome,
-                        sobrenome: sobrenome,
-                        cargo: "usuario",
-                        email: document.querySelector("#get_email").value,
-                    }),
-                });
-
-                const dados = await response.json()
-
-                console.log(dados)
-            } catch (error) {
-                console.error("Erro na requisição: ", error)
-            }
-        }
-
-    </script>
-    <script src="/views/javascript/cadastro.js" defer></script>
-    <script src="/views/javascript/script.js"></script>
+    <script src="/static/javascript/cadastro.js"></script>
+    <script src="/static/javascript/script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    
+
 </body>
 
 </html>
