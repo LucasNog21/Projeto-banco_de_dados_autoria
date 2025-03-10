@@ -50,7 +50,7 @@ app.mount("/static", StaticFiles(directory="views/static"), name="static")
 async def get_db_connection():
     return await asyncpg.connect(
         user='postgres',
-        password='',
+        password='SQL',
         database='projeto',
         host='localhost'
     )
@@ -74,7 +74,7 @@ def home():
 
 @app.post('/login')
 async def login_user(request: LoginRequest):
-    if request.email == "email@email.com" and request.password == "123":
+    if request.email == "email@email.com" and request.senha == "123":
         return {"status": 200, "message": "Login bem-sucedido"}
     else:
         raise HTTPException(status_code=401, detail="Email ou senha incorretos")
