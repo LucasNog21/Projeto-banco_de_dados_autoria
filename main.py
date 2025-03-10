@@ -32,7 +32,7 @@ app = FastAPI()
 
 dirname = os.path.dirname(__file__)
 
-app.mount("/static", StaticFiles(directory=os.path.join(dirname, 'static')), name="static")
+app.mount("/static", StaticFiles(directory=os.path.join(dirname, 'views/static')), name="static")
 
 origins = [
     "http://localhost",
