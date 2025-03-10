@@ -22,9 +22,9 @@ function togglePassword() {
 
     if (passwordField.type === "password") {
         passwordField.type = "text";
-        eyeIcon.setAttribute("name", "eye-outline"); // Ícone de olho aberto
+        eyeIcon.setAttribute("name", "eye-outline");
     } else {
         passwordField.type = "password";
-        eyeIcon.setAttribute("name", "eye-off-outline"); // Ícone de olho fechado
+        eyeIcon.setAttribute("name", "eye-off-outline");
     }
 }

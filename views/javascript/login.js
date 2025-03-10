@@ -1,27 +1,53 @@
-async function get_login() {
-
-    const email = "email@email";
-    const senha = "123";
-
-    try {
-        let response = await fetch("http://localhost:8000/login/${email}/${senha}");
-        const data = await response.json();
-        console.log(data);
-        return data;
-    } catch (error) {
-        console.error(error)
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("login-form");
+    if (!form) {
+        console.error("Erro: O elemento #login-form não foi encontrado.");
+        return;
     }
 
-}
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault(); // Evita o recarregamento da página
 
-async function login() {
+        console.log("Formulário enviado!");
 
-    let response = await get_login()
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const message = document.getElementById("message");
 
-    if (response == 200){
-        console.log("logado")
-    } else {
-        console.log("paia")
-    }
+        if (!email || !password) {
+            message.textContent = "Preencha todos os campos.";
+            message.style.color = "red";
+            return;
+        }
 
-}
+        console.log("Iniciando fetch...");
+
+        try {
+            const response = await fetch("http://127.0.0.1:8000/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            console.log("Fetch concluído, processando resposta...");
+
+            const data = await response.json();
+            console.log("Resposta da API:", data);
+
+            if (data.status === 200) {
+                console.log("Login bem-sucedido!");
+                // Redirecionamento, se necessário:
+                // window.location.href = "/dashboard";
+            } else {
+                message.textContent = data.message;
+                message.style.color = "red";
+            }
+        } catch (error) {
+            console.error("Erro na requisição:", error);
+            message.textContent = "Erro ao tentar logar.";
+            message.style.color = "red";
+        }
+    });
+});

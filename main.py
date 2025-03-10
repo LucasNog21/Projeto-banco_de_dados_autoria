@@ -5,8 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import asyncpg
 from pydantic import BaseModel
 from datetime import datetime
-
-
+from fastapi import HTTPException
 
 class Usuario(BaseModel):
     id : int
@@ -16,6 +15,10 @@ class Usuario(BaseModel):
     sobrenome : str
     cargo : str
     email : str
+
+class LoginRequest(BaseModel):
+    email : str
+    senha : str
 
 class Noticia(BaseModel):
     id_noticia: int
@@ -47,7 +50,7 @@ app.mount("/static", StaticFiles(directory="views/static"), name="static")
 async def get_db_connection():
     return await asyncpg.connect(
         user='postgres',
-        password='SQL',
+        password='',
         database='projeto',
         host='localhost'
     )
@@ -69,18 +72,12 @@ def home():
 
 #RECEBER ELOGIOS DE THIAGO, COMPARACAO NAO ESTÁ FUNCIONANDO
 
-@app.get('/login/{email}/{senha}')
-async def get_users(email: str, senha: str):
-    conn = await get_db_connection()
-    row = await conn.fetch("SELECT email, senha FROM usuarios WHERE email = $1 AND senha = $2", email, senha)
-    await conn.close()
-    
-    if len(row) == 0:
-        return 100 # Não tem usuário ( Ou o email ou a senha está errada )
+@app.post('/login')
+async def login_user(request: LoginRequest):
+    if request.email == "email@email.com" and request.password == "123":
+        return {"status": 200, "message": "Login bem-sucedido"}
     else:
-        return 200 # Usuário encontrado.
-    
-
+        raise HTTPException(status_code=401, detail="Email ou senha incorretos")
 
 @app.get("/get_len")
 async def get_len_user():
