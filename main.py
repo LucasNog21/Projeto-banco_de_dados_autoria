@@ -61,7 +61,7 @@ async def test_connection():
     await conn.close()
     return {'message': 'conexão bem sucedida'}
 
-@app.post('/')
+@app.get('/')
 def home():
     with open('views/html/login.html', 'r', encoding='utf-8') as file:
         html_content = file.read()
