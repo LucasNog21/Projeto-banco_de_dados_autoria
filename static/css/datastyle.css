@@ -201,3 +201,9 @@ footer{
     font-size: smaller; 
     justify-content: center;
 }
+
+#grafico_saber_tecnoautoritarismo {
+    width:50%; 
+    height:300px; 
+    margin:0 auto;
+}
