@@ -53,7 +53,7 @@ app.add_middleware(
 async def get_db_connection():
     return await asyncpg.connect(
         user='postgres',
-        password='',
+        password='sql',
         database='projeto',
         host='localhost'
     )
@@ -86,9 +86,27 @@ async def login_user(request: LoginRequest):
 
 #RECEBER ELOGIOS DE THIAGO, COMPARACAO NAO ESTÁ FUNCIONANDO
 
-@app.post('/index/{id}')
+@app.get('/index/{id}')
 def home():
     with open('views/html/index.html', 'r', encoding='utf-8') as file:
+        html_content = file.read()
+
+    return HTMLResponse(content=html_content)
+@app.get('/profile/{id}')
+def home():
+    with open('views/html/profile.html', 'r', encoding='utf-8') as file:
+        html_content = file.read()
+
+    return HTMLResponse(content=html_content)
+@app.get('/editprofile/{id}')
+def home():
+    with open('views/html/editprofile.html', 'r', encoding='utf-8') as file:
+        html_content = file.read()
+
+    return HTMLResponse(content=html_content)
+@app.get('/data/{id}')
+def home():
+    with open('views/html/data.html', 'r', encoding='utf-8') as file:
         html_content = file.read()
 
     return HTMLResponse(content=html_content)

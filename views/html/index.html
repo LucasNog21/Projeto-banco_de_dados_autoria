@@ -18,15 +18,15 @@
             <button class="menu-button" onclick="toggleMenu()" style="margin-right: 20px;">☰</button>
             <div class="menu-dropdown">
 
-                <a href="/views/html/profile.html">Perfil</a>
-                <a href="/views/html/index.html">Home</a>
-                <a href="/views/html/data.html">Pesquisa</a>
+                <a onclick="redirection('http://localhost:8000/profile')">Perfil</a>
+                <a onclick="redirection('http://localhost:8000/profile')">Home</a>
+                <a onclick="redirection('http://localhost:8000/profile')">Pesquisa</a>
                 <a href="/views/html/login.html" style="color: red;">Sair</a> <!--tem como deslogar?-->
                 <div style="display:flex; justify-content: center; padding: 2px; margin: 2px;">
-                    <a href=""><img src="/img/logoinsta.png" alt="" width="15px"></a>
-                    <a href=""><img src="/img/logox.png" alt="" width="15px"></a>
-                    <a href=""><img src="/img/logowhatsapp.png" alt="" width="15px"></a>
-                    <a href=""><img src="/img/logoemail.png" alt="" width="15px"></a>
+                    <a href=""><img src="/static/img/logoinsta.png" alt="" width="15px"></a>
+                    <a href=""><img src="/static/img/logox.png" alt="" width="15px"></a>
+                    <a href=""><img src="/static/img/logowhatsapp.png" alt="" width="15px"></a>
+                    <a href=""><img src="/static/img/logoemail.png" alt="" width="15px"></a>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
         <h2 style="font-size: 50px; margin-top: -100px; padding-bottom: 30px;">A lesgislação brasileira: proteção e
             permissão do Tecnoautoritarismo</h2>
         <div class="headline" style="display: flex;">
-            <img class="e-image" src="/img/vetor-server.png" width="200px" height="200px" alt="">
+            <img class="e-image" src="/static/img/vetor-server.png" width="200px" height="200px" alt="">
             <div class="content">
                 <h2>O que é o Tecnoautoritarismo?</h2>
                 <p>Tecnoautoritarismo é o uso de tecnologias digitais por regimes autoritários para controlar, vigiar e
@@ -49,7 +49,7 @@
         <div class="services">
             <div class="card">
                 <div class="card-text" style="display: flex;">
-                    <img class="e-image" src="/img/vetor-website-pages.png" width="150px" alt="">
+                    <img class="e-image" src="/static/img/vetor-website-pages.png" width="150px" alt="">
                     <div class="card-content">
                         <h3>Social Score</h3>
                         <p>O Social Score, sistema de pontuação social do governo chinês, incentiva a conformidade às
@@ -67,12 +67,12 @@
                             influenciadores pode ameaçar a privacidade e facilitar perseguições políticas, ao tratar
                             críticos como inimigos do Estado.</p>
                     </div>
-                    <img class="e-image" src="/img/vetor-notebook-user.png" width="190px" height="200px" alt="">
+                    <img class="e-image" src="/static/img/vetor-notebook-user.png" width="190px" height="200px" alt="">
                 </div>
             </div>
             <div class="card">
                 <div class="card-text" style="display: flex;">
-                    <img class="e-image" src="/img/vetor-hacker.png" width="200px" alt="">
+                    <img class="e-image" src="/static/img/vetor-hacker.png" width="200px" alt="">
                     <div class="card-content">
                         <h3>Da placa de carro ao CPF</h3>
                         <p>Na coletânea do Intercept, destaca-se o sistema de vigilância Córtex, que reconhece placas de
@@ -94,12 +94,12 @@
                             priorizando transparência e consentimento. A Autoridade Nacional de Proteção de Dados (ANPD)
                             é responsável por fiscalizar sua aplicação.</p>
                     </div>
-                    <img class="e-image" src="/img/vetor-lgpd.png" width="200px" height="150px" alt="">
+                    <img class="e-image" src="/static/img/vetor-lgpd.png" width="200px" height="150px" alt="">
                 </div>
             </div>
             <div class="card">
                 <div class="card-text" style="display: flex;">
-                    <img class="e-image" src="/img/vetor-marco-civil.png" width="250px" height="190px" alt="">
+                    <img class="e-image" src="/static/img/vetor-marco-civil.png" width="250px" height="190px" alt="">
                     <div class="card-content">
                         <h3>Marcos civis da internet</h3>
                         <p>O Marco Civil da Internet, instituído pela Lei nº 12.965/2014, regula o uso da internet no
@@ -114,7 +114,7 @@
             </div>
             <div class="card">
                 <div class="card-text" style="display: flex;">
-                    <img class="e-image" src="/img/vetor-server.png" width="150px" height="150px" alt="">
+                    <img class="e-image" src="/static/img/vetor-server.png" width="150px" height="150px" alt="">
                     <div class="card-content">
                         <h3>Projeto Integrador</h3>
                         <p>Este protótipo integra o projeto de quatro alunos do 3º ano de informática do IFRN Campus Pau
@@ -127,27 +127,21 @@
         </div>
         <a href="/views/html/data.html" class="contact-btn">Veja a análise dos dados!</a>
     </section>
-    <article>
-        <h3>Outras exposições</h3>
-        <img src="" alt="">
-        <p>Intercept lança bolsas para reportagens sobre tecnoautoritarismo</p>
-        <p>Em parceria com a Associação Data Privacy Brasil de Pesquisa, queremos publicar histórias sobre como o uso de
-            tecnologias por governos pode violar direitos</p>
-    </article>
     <footer>
         <div class="logo-footer">
             <h1 style="font-size: 34px; color: white; font-family: 'Pixelify Sans', cursive;">Tecnoautoritarismo</h1>
             <div id="logos">
-                <img src="/img/logoinsta.png" alt="" width="25px" style="padding: 0 5px 0 5px;">@tecnoautoritarismo
-                <img src="/img/logox.png" alt="" width="25px" style="padding: 0 5px 0 5px;">@tecnoautoritarismo
-                <img src="/img/logowhatsapp.png" alt="" width="25px" style="padding: 0 5px 0 5px;">(11) 94002-8922
-                <img src="/img/logoemail.png" alt="" width="25px"
+                <img src="/static/img/logoinsta.png" alt="" width="25px" style="padding: 0 5px 0 5px;">@tecnoautoritarismo
+                <img src="/static/img/logox.png" alt="" width="25px" style="padding: 0 5px 0 5px;">@tecnoautoritarismo
+                <img src="/static/img/logowhatsapp.png" alt="" width="25px" style="padding: 0 5px 0 5px;">(11) 94002-8922
+                <img src="/static/img/logoemail.png" alt="" width="25px"
                     style="padding: 0 5px 0 5px;">tecnoautoritarismo@gmail.com
             </div>
         </div>
         <b style="color:white">© Todos os direitos reservados.</b>
     </footer>
     <script src="/static/javascript/script.js"></script>
+    <script src="/static/javascript/redirection.js"></script>
 </body>
 
 </html>

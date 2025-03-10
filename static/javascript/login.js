@@ -58,7 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     const html = await response.text();
             
                     // Exibindo o conteúdo no console ou fazendo algo com ele
-                    console.log(html);
+                    console.log(data.url);
+                    setTimeout(function() {
+                        window.location.href = `${data.url}`;
+                      }, 2000);
                 } catch(erro) {
                     console.error(erro)
                 }
@@ -74,10 +77,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-async function displayHtml(url, elementId) {
-    const html = await fetchHtml(url);
-    const element = document.getElementById(elementId);
-    if (element) {
-        element.innerHTML = html;  // Inserindo o HTML no elemento
+async function displayHtml(url) {
+    try {
+        const dir = await fetch(`${url}`)
+        const data = await dir.json()
+        return data
+    } catch (error) {
+        console.log("Erro no dir")
     }
 }
