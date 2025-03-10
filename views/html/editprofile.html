@@ -33,28 +33,17 @@
     <section style="display: flex; justify-content: center; align-items: center;" >
         <main>
             <div>
-                <h1 style="color: white;">Perfil público</h1>
+                <h1 style="color: white;">Alterar Senha</h1>
             </div>
             <form action="/views/html/profile.html">
-                <div class="inputbox">
-                    <input type="name" id="name" placeholder="Nome">
-                    <label for="name"></label>
+                <div class="inputbox" style="position: relative;">
+                    <input type="password" id="newpassword" required>
+                    <label for="newpassword">Nova Senha</label>
                 </div>
-                <div class="inputbox">
-                    <input type="email" id="email" placeholder="Email">
-                    <label for="email"></label>
-                </div>
-                <button onclick="">Atualizar</button> <br> <br> <!--Funcao de atualizar-->
+                <button onclick="updatePassword()">Atualizar</button> <br> <br> <!--Funcao de atualizar-->
+                <button onclick="deleteUser()" style="background-color: red; border-radius: 8px; font-size: small;">Deletar Conta</button> <!--Funcao de deletar-->
             </form>
         </main>
-        <aside class="container" style="justify-items: center; text-align: center; width: 30%;">
-            <h3>Nome de Usuário</h3>
-            <div style="border: solid 1px red; border-radius: 50%;">
-                <img src="/img/vetor-hacker.png" alt="" height="100px" width="100px">
-            </div>
-            <h3>Editar Foto</h3>
-            <button onclick="" style="background-color: red; border-radius: 8px; font-size: small;">Deletar Conta</button> <!--Funcao de deletar-->
-        </aside>
     </section>
     <footer class="footer">
         <p>© 2025 Tecnoautoritarismo</p>

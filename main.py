@@ -98,18 +98,6 @@ async def cadastro_usuarios(usuario: Usuario):
     await conn.close()
     return {"message": "Criado pai."}
 
-
-@app.get('/recuperar_email/{email}')
-async def get_login(email: str):
-    conn = await get_db_connection()
-    row = await conn.fetch("SELECT email FROM usuarios WHERE email = $1;", email)
-    await conn.close()
-
-    if len(row) == 0:
-        return False #Não existe esse email
-    else:
-        return True #Existe esse email
-
 # FUNCIONA UMA BELEZA
 @app.put('/trocar_senha/{id_usuario}')
 async def set_password(id_usuario: int, senha: str):
@@ -144,28 +132,6 @@ async def get_noticias():
         noticias.append(f"id_noticia: {i['id_noticia']}, id_autor: {i['id_autor']}, conteudo_noticia: {i['conteudo_noticia']}, data_publicacao: {i['data_publicacao']}")
 
     return {'Noticias: ':noticias}
-
-#provavelmente dando erro devido ao tipo date do $4
-@app.post('/criar_noticias')
-async def post_noticias(new : Noticia):
-    data_formatada = datetime.strptime(new.data_publicacao,'%Y-%m-%d')
-
-    conn = await get_db_connection()
-    await conn.execute(
-        "INSERT INTO noticias (id_noticia, id_autor, conteudo_noticia, data_publicacao) VALUES($1, $2, $3, $4)",
-        new.id_noticia, new.id_autor, new.conteudo_noticia, data_formatada
-    )
-    await conn.close()
-    return {'message': 'show the balls'}
-
-@app.delete('/delete_noticias')
-async def delete_noticias(id_noticia : int):
-    conn = await get_db_connection()
-    await conn.execute(
-        'DELETE FROM noticias WHERE id_noticia = $1', id_noticia)
-    
-    await conn.close()
-    return {'message' : 'noticia deletada'}
 
 @app.get('/get_respostas')
 async def get_respostas():
