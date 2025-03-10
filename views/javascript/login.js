@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log("Formulário enviado!");
 
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+        const get_email = document.getElementById("email").value;
+        const get_senha = document.getElementById("password").value;
         const message = document.getElementById("message");
 
         if (!email || !password) {
@@ -23,12 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Iniciando fetch...");
 
         try {
-            const response = await fetch("http://127.0.0.1:8000/login", {
+            const response = await fetch("http://localhost:8000/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({ 
+                    email: get_email, 
+                    senha: get_senha })
             });
 
             console.log("Fetch concluído, processando resposta...");

@@ -74,8 +74,13 @@ def home():
 
 @app.post('/login')
 async def login_user(request: LoginRequest):
-    if request.email == "email@email.com" and request.senha == "123":
-        return {"status": 200, "message": "Login bem-sucedido"}
+    conn = await get_db_connection()
+    row = await conn.fetch("SELECT email, senha FROM usuarios;")
+    await conn.close()
+
+    for i in row:
+        if request.email == str(i["email"]) and request.senha == str(i["senha"]):
+            return {"status": 200}
     else:
         raise HTTPException(status_code=401, detail="Email ou senha incorretos")
 
