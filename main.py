@@ -32,7 +32,7 @@ app = FastAPI()
 
 dirname = os.path.dirname(__file__)
 
-app.mount("/static", StaticFiles(directory=os.path.join(dirname, 'views/static')), name="static")
+app.mount("/static", StaticFiles(directory=os.path.join(dirname, 'static')), name="static")
 
 origins = [
     "http://localhost",
@@ -71,7 +71,7 @@ def home():
 
     return HTMLResponse(content=html_content)
 
-@app.post('/login', response_class=HTMLResponse)
+@app.post('/login')
 async def login_user(request: LoginRequest):
     conn = await get_db_connection()
     row = await conn.fetch("SELECT id_usuario, email, senha FROM usuarios;")
