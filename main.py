@@ -6,6 +6,7 @@ import asyncpg
 from pydantic import BaseModel
 from datetime import datetime
 from fastapi import HTTPException
+import os
 
 class Usuario(BaseModel):
     id : int
@@ -29,6 +30,10 @@ class Noticia(BaseModel):
 
 app = FastAPI()
 
+dirname = os.path.dirname(__file__)
+
+app.mount("/static", StaticFiles(directory=os.path.join(dirname, 'static')), name="static")
+
 origins = [
     "http://localhost",
     "http://localhost:8000",
@@ -44,8 +49,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-app.mount("/static", StaticFiles(directory="views/static"), name="static")
 
 async def get_db_connection():
     return await asyncpg.connect(
