@@ -61,28 +61,33 @@ async def test_connection():
     await conn.close()
     return {'message': 'conexão bem sucedida'}
 
+@app.post('/')
+def home():
+    with open('views/html/login.html', 'r', encoding='utf-8') as file:
+        html_content = file.read()
 
-@app.get('/', response_class=HTMLResponse)
+    return HTMLResponse(content=html_content)
+
+@app.post('/login', response_class=HTMLResponse)
+async def login_user(request: LoginRequest):
+    conn = await get_db_connection()
+    row = await conn.fetch("SELECT id_usuario, email, senha FROM usuarios;")
+    await conn.close()
+
+    for i in row:
+        if request.email == str(i["email"]) and request.senha == str(i["senha"]):
+            return {"status": 200, 'id' : str(i['id_usuario']), 'url' : f'index/{str(i['id_usuario'])}'}
+    else:
+        raise HTTPException(status_code=401, detail="Email ou senha incorretos")
+
+#RECEBER ELOGIOS DE THIAGO, COMPARACAO NAO ESTÁ FUNCIONANDO
+
+@app.post('/index/{id}')
 def home():
     with open('views/html/index.html', 'r', encoding='utf-8') as file:
         html_content = file.read()
 
     return HTMLResponse(content=html_content)
-
-
-#RECEBER ELOGIOS DE THIAGO, COMPARACAO NAO ESTÁ FUNCIONANDO
-
-@app.post('/login')
-async def login_user(request: LoginRequest):
-    conn = await get_db_connection()
-    row = await conn.fetch("SELECT email, senha FROM usuarios;")
-    await conn.close()
-
-    for i in row:
-        if request.email == str(i["email"]) and request.senha == str(i["senha"]):
-            return {"status": 200}
-    else:
-        raise HTTPException(status_code=401, detail="Email ou senha incorretos")
 
 @app.get("/get_len")
 async def get_len_user():
