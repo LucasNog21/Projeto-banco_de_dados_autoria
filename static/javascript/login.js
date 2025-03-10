@@ -42,6 +42,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("Login bem-sucedido!");
                 // Redirecionamento, se necessário:
                 // window.location.href = "/dashboard";
+                try{
+                    const response = await fetch(data.url, {
+                        method:"GET",
+                        headers: {
+                            "Accept": "text/html"  // Especificando que esperamos uma resposta em HTML
+                        }
+                    });
+            
+                    if (!response.ok) {
+                        throw new Error("Erro ao obter o conteúdo da página");
+                    }
+            
+                    // Obtendo o conteúdo HTML da resposta
+                    const html = await response.text();
+            
+                    // Exibindo o conteúdo no console ou fazendo algo com ele
+                    console.log(html);
+                } catch(erro) {
+                    console.error(erro)
+                }
             } else {
                 message.textContent = data.message;
                 message.style.color = "red";

@@ -79,7 +79,7 @@ async def login_user(request: LoginRequest):
 
     for i in row:
         if request.email == str(i["email"]) and request.senha == str(i["senha"]):
-            return {"status": 200, 'id' : str(i['id_usuario']), 'url' : f'index/{str(i['id_usuario'])}'}
+            return {"status": 200, 'id' : str(i['id_usuario']), 'url' : f'http://localhost:8000/index/{str(i['id_usuario'])}'}
     else:
         raise HTTPException(status_code=401, detail="Email ou senha incorretos")
 
